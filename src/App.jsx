@@ -27,18 +27,20 @@ export default function App() {
         const genderObj = { gender: 'all' };
         localStorage.setItem('gender', JSON.stringify(genderObj));
 
-        setRobots(results);
-        setLoading(false);
-        history.push(`/robots?gender=${gender}`);
+        setPageState();
       } else {
-        setRobots(storage);
-        setLoading(false);
-        history.push(`/robots?gender=${gender}`);
+        setPageState();
       }
     }
 
     getRobots();
   }, []);
+
+  function setPageState() {
+    setRobots(storage);
+    setLoading(false);
+    history.push(`/robots?gender=${gender}`);
+  }
 
   return (
     <>
